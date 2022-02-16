@@ -1,8 +1,11 @@
+from multiprocessing import context
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from StoreOnline.forms import RegisterForm
 
 def index(request):
     context = {
@@ -28,3 +31,15 @@ def login_view(request):
         else:
             messages.error(request, 'Usuario o contraseñas no validos')
     return render(request, 'users/login.html', {})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Sesion cerrada corectamente')
+    return redirect('login')
+
+def register(request):
+    form = RegisterForm
+    context = {
+        'form' : form,
+    }
+    return render(request, 'users/register.html', context)
