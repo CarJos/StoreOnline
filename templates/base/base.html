@@ -1,0 +1,29 @@
+{% load static %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    {% include 'base/navbar.html' %}
+    <div class="container">
+        {% include 'base/message.html' %}
+        <div class="row mt-3">
+            
+            {% block content %}
+            {% endblock content %}
+
+        </div>
+    </div>
+</body>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://kit.fontawesome.com/ed5652a487.js" crossorigin="anonymous"></script>
+</html>
