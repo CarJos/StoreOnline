@@ -6,8 +6,9 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from StoreOnline.forms import RegisterForm
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from products.models import Product
+from users.models import User
 
 def index(request):
     products = Product.objects.all().order_by('title')
