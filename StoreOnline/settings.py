@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #apps de terceros
     'bootstrap4',
     #apps nuestras
+    'carts',
     'categories',
     'products',
     'users',
