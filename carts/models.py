@@ -13,7 +13,7 @@ class Cart(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return ''
+        return self.cart_id
 
 def set_cart_id(sender, instance, *arg, **kwargs):
     if not instance.cart_id:
