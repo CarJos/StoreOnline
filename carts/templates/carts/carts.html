@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load product_extras %}
 {% block content %}
-    {% if carts.product.exists %}
+    {% if cart.products.exists %}
         <div class="col-8">
             <table class="table">
                 <thead>
@@ -14,7 +14,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for product in carts.product.all %}
+                    {% for cp in cart.cartproducts_set.all %}
+                    {% with product=cp.product %}
                       <tr>
                           <th>{{forloop.counter}}</th>
                           <th>
@@ -24,18 +25,29 @@
                           </th>
                           <th>
                               <a href="{% url 'products:product' product.slug %}">{{product.title}}</a>
+                              {% include "carts/snippets/remove.html" %}
                           </th>
-                          <th>1</th>
+                          <th>{{cp.quantity}}</th>
                           <th>
                               <span class="font-weight-bold text-danger">{{product.price | price_format}}</span>
                           </th>
                       </tr>
+                    {% endwith %}
                     {% endfor %}
                 </tbody>
             </table>
         </div>
         <div class="col">
-
+            <div class="card">
+                <div class="card-body">
+                    <div class="font-weight-bold">
+                        Subtotal ({{cart.products.count}} productos): <span class="text-danger">{{cart.subtotal | price_format}}</span>
+                        <div class="mt-2">
+                            <a href="" class="btn btn-warning">Proceder al pago</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         {% else %}
         <div class="col">
