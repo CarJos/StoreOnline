@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #apps nuestras
     'carts',
     'categories',
+    'orders',
     'products',
     'users',
 ]
