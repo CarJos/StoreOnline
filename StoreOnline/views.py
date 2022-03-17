@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from StoreOnline.forms import RegisterForm
 # from django.contrib.auth.models import User
@@ -30,6 +30,8 @@ def login_view(request):
         if user:
             login(request, user)
             messages.success(request, 'Bienvenido {}'.format(user.username))
+            if request.GET.get('next'):
+                return HttpResponseRedirect(request.GET['next'])
             return redirect('products:index')
         else:
             messages.error(request, 'Usuario o contraseñas no validos')

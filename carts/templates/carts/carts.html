@@ -44,7 +44,7 @@
                     <div class="font-weight-bold">
                         Subtotal ({{cart.products.count}} productos): <span class="text-danger">{{cart.subtotal | price_format}}</span>
                         <div class="mt-2">
-                            <a href="" class="btn btn-warning">Proceder al pago</a>
+                            <a href="{% url 'orders:order' %}" class="btn btn-warning">Proceder al pago</a>
                         </div>
                     </div>
                 </div>
