@@ -2,9 +2,18 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 
+from shipping_address.views import default
+
 class User(AbstractUser):
     def get_full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    @property
+    def shipping_address(self):
+        return self.shippingaddress_set.filter(default=True).first()
+
+    def has_shipping_address(self):
+        return self.shipping_address is not None
         
 class Costumer(User):
     class Meta:
