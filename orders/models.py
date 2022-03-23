@@ -5,6 +5,7 @@ from users.models import User
 import uuid
 from django.db.models.signals import pre_save
 from random import choices
+from shipping_address.models import ShippingAddress
 
 class OrderStatus(Enum):
     '''Para limitar las opciones que el atributo status puede almacenar'''
@@ -23,7 +24,7 @@ class Order(models.Model):
     shipping_total = models.DecimalField(default=5, max_digits=8, decimal_places=2)
     total = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     created_at = models.DateField(auto_now_add=True)
-
+    
     def __str__(self):
         return self.order_id
 

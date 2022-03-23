@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 
-from shipping_address.views import default
 
 class User(AbstractUser):
     def get_full_name(self):

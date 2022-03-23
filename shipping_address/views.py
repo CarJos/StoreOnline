@@ -64,7 +64,7 @@ class ShippingAddressDeleteViews(LoginRequiredMixin, generic.DeleteView):
     login_url = 'login'
     model = ShippingAddress
     template_name = 'delete.html'
-    success_url = reverse_lazy('shipping_address:shipping_address')
+    success_url = reverse_lazy('shipping_address:shipping_addresses')
     success_message = 'Direccion Eliminada'
 
     def dispatch(self, request, *args, **kwargs):
