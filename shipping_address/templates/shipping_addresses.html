@@ -7,7 +7,7 @@
           <div class="mt-2">
             {% for shipping_address in object_list %}
               <div class="mt-2">
-                {% include "snippets/shipping_address.html" %}
+                {% include "snippets/shipping_address.html" with edit=True %}
               </div>
             {% endfor %}
           </div>

@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% block breadcrumb %}
+  {% include "snippets/breadcrumb.html" %}
+{% endblock breadcrumb %}
+{% block content %}
+  <div class="col">
+      <div class="h3">
+          Seleccione una direccion de envio
+      </div>
+      <div class="mt-2">
+          {% for shipping_address in shipping_addresses %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5>
+                            {{shipping_address.address}}
+                        </h5>
+                        <p class="cart-title">{{shipping_address.postal_code}}</p>
+                        <a href="{% url 'orders:check_address' shipping_address.pk %}" class="btn btn-warning">Seleccionar direccion</a>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+      </div>
+  </div>
+{% endblock content %}
