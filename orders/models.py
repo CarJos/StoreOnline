@@ -1,6 +1,5 @@
 from operator import truediv
 from django.db import models
-from enum import Enum
 from carts.models import Cart
 import shipping_address
 from users.models import User
@@ -8,15 +7,8 @@ import uuid
 from django.db.models.signals import pre_save
 from random import choices
 from shipping_address.models import ShippingAddress
-
-class OrderStatus(Enum):
-    '''Para limitar las opciones que el atributo status puede almacenar'''
-    CREATED = 'CREATED'
-    PAYED = 'PAYED'
-    COMPLETED = 'COMPLETED'
-    CANCELED = 'CANCELED'
-
-choices = [(tag, tag.value) for tag in OrderStatus]
+from orders.common import OrderStatus
+from orders.common import choices
 
 class Order(models.Model):
     order_id = models.CharField(max_length=100,null=False, unique=True)

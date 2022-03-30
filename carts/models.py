@@ -4,6 +4,7 @@ from products.models import Product
 from django.db.models.signals import pre_save
 from django.db.models.signals import post_save
 from django.db.models.signals import m2m_changed
+from orders.common import OrderStatus
 import decimal
 import uuid
 
@@ -40,7 +41,7 @@ class Cart(models.Model):
 
     @property
     def order(self):
-        return self.order_set.first()
+        return self.order_set.filter(status=OrderStatus.CREATED).first()
 
 class CartProductsManager(models.Manager):
     
