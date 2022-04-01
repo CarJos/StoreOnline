@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #apps de terceros
     'bootstrap4',
     #apps nuestras
+    'billing_profiles',
     'carts',
     'categories',
     'orders',
